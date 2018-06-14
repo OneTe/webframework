@@ -42,4 +42,14 @@ public final class BeanHelper {
         }
         return (T) BEAN_MAP.get(cls);
     }
+
+    /*
+       设置Bean实例
+
+       在AopHelper中需要获取所有目标类及其被拦截的切面类实例，并通过ProxyManager#createProxy方法来创建代理对象
+       最后将其放入到Bean Map中
+     */
+    public static void setBean(Class<?> cls,Object obj){
+        BEAN_MAP.put(cls,obj);
+    }
 }

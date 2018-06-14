@@ -1,9 +1,6 @@
 package org.onete.framework;
 
-import org.onete.framework.helper.BeanHelper;
-import org.onete.framework.helper.ClassHelper;
-import org.onete.framework.helper.ControllerHelper;
-import org.onete.framework.helper.IocHelper;
+import org.onete.framework.helper.*;
 import org.onete.framework.util.ClassUtil;
 
 /**
@@ -17,8 +14,10 @@ public final class HelperLoader {
         Class<?>[] classList = {
                 ClassHelper.class,
                 BeanHelper.class,
+                //AopHelp要在IocHelp之前加载，因为首先要通过AopHelper获取代理对象，然后才能通过IocHelper进行依赖注入
+                AopHelper.class,
                 IocHelper.class,
-                ControllerHelper.class
+                ControllerHelper.class,
         };
         for(Class<?> cls : classList){
             ClassUtil.loadClass(cls.getName(),false);
