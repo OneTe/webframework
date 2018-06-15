@@ -1,6 +1,7 @@
 package org.onete.framework.bean;
 
 import org.onete.framework.util.CastUtil;
+import org.onete.framework.util.CollectionUtil;
 
 import java.util.Map;
 
@@ -26,5 +27,12 @@ public class Param {
      */
     public Map<String,Object> getMap(){
         return paramMap;
+    }
+
+    /*
+       验证参数是否为空
+     */
+    public boolean isEmpty(){
+        return CollectionUtil.isEmpty(paramMap);
     }
 }
