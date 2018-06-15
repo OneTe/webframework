@@ -1,9 +1,11 @@
 package org.onete.framework.helper;
 
 import org.onete.framework.annotation.Aspect;
+import org.onete.framework.annotation.Service;
 import org.onete.framework.proxy.AspectProxy;
 import org.onete.framework.proxy.Proxy;
 import org.onete.framework.proxy.ProxyManager;
+import org.onete.framework.proxy.TransactionProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,6 +44,15 @@ public final class AopHelper {
      */
     private static Map<Class<?>,Set<Class<?>>> createProxyMap() throws Exception{
         Map<Class<?>,Set<Class<?>>> proxyMap = new HashMap<Class<?>, Set<Class<?>>>();
+        addAspectProxy(proxyMap);
+        addTransactionProxy(proxyMap);
+        return proxyMap;
+    }
+
+    /*
+       普通切面类代理
+     */
+    private static void addAspectProxy(Map<Class<?>,Set<Class<?>>> proxyMap) throws Exception{
         Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AspectProxy.class);
         for(Class<?> proxyClass : proxyClassSet){
             if(proxyClass.isAnnotationPresent(Aspect.class)){
@@ -50,8 +61,17 @@ public final class AopHelper {
                 proxyMap.put(proxyClass,targetClassSet);
             }
         }
-        return proxyMap;
     }
+
+    /*
+       添加事务代理
+     */
+    private static void addTransactionProxy(Map<Class<?>,Set<Class<?>>> proxyMap){
+        Set<Class<?>> serviceClassSet = ClassHelper.getClassSetByAnnotation(Service.class);
+        proxyMap.put(TransactionProxy.class,serviceClassSet);
+    }
+
+
 
     /*
        获取带Aspect注解的所用类
