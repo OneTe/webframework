@@ -11,6 +11,11 @@ import org.apache.commons.lang3.StringUtils;
     字符串工具类
  */
 public final class StringUtil {
+
+    /*
+       字符串分隔符
+     */
+    public static final String SEPARATOR = String.valueOf((char)29);//分组符
     /*
       判断字符串是否为空
      */
@@ -41,5 +46,6 @@ public final class StringUtil {
         for(String s : rs){
             System.out.print(s + " ");
         }
+        System.out.println(SEPARATOR);
     }
 }

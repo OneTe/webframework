@@ -81,7 +81,7 @@ public class DispatcherServlet extends HttpServlet{
                     }
                 }
             }
-            Param param = new Param(paramMap);
+            Param param = null;//new Param(paramMap);//TODO
             //调用Action 方法
             Method actionMethod = handler.getActionMethod();
 

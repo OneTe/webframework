@@ -26,3 +26,5 @@
  最后将Request与Handler建立一个映射关系，放入一个Action Map中，并提供一个可根据请求方法与请求路径获取处理对象的方法。
 8，使用HelperLoader集中加载框架类
 9,核心类DispatcherServlet处理所有请求,继承HttpServlet，初始化Helper类，处理Action方法，并返回结果
+10，对aop的支持
+11，对事务的支持

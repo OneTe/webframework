@@ -18,4 +18,5 @@ public interface ConfigConstant {
     String APP_BASE_PACKAGE = "onete.framework.app.base_package";
     String APP_JSP_PATH = "onete.framework.app.jsp_path";
     String APP_ASSET_PATH = "onete.framework.app.asset_path";
+    String APP_UPLOAD_LIMIT = "onete.framework.app.upload_limit";
 }
