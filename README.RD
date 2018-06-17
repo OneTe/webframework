@@ -28,3 +28,5 @@
 9,核心类DispatcherServlet处理所有请求,继承HttpServlet，初始化Helper类，处理Action方法，并返回结果
 10，对aop的支持
 11，对事务的支持
+12，提供文件上传功能
+13，优化
